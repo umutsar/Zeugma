@@ -38,6 +38,11 @@ void setup() {
   Transmitted_Data.can_id = 124;
   Transmitted_Data.can_dlc = 8;
   Transmitted_Data.data[0] = 212;
+
+  Transmitted_Data.data[4] = 0;
+  Transmitted_Data.data[5] = 0;
+  Transmitted_Data.data[6] = 0;
+  Transmitted_Data.data[7] = 0;
 }
 
 
@@ -106,6 +111,7 @@ void loop() {
 
       Transmitted_Data.data[2] = (int)(currentCapacity / 256);
       Transmitted_Data.data[3] = (int)fmod(currentCapacity, 256);
+
 
       mcp2515.sendMessage(&Transmitted_Data);
       canFlag = 0;
